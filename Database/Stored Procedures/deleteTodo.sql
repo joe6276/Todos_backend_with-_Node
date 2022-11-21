@@ -1,0 +1,9 @@
+
+CREATE PROCEDURE deleteTodo(@id VARCHAR(100))
+AS
+BEGIN
+DELETE FROM TodosTable WHERE id =@id
+END
+
+
+EXEC getTodos

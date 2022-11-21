@@ -1,0 +1,29 @@
+
+
+GET http://localhost:4000/todos
+
+###
+GET http://localhost:4000/todos
+###
+POST http://localhost:4000/todos
+Content-Type: application/json
+
+{
+    "title":"Code",
+    "description":"SOlve A Bug",
+    "date":"2022-10-10"
+}
+
+###
+PUT http://localhost:4000/todos/sdfhdhdhvjfdhn
+Content-Type: application/json
+
+{
+    "title":"Updated Code",
+    "description":"Updated SOlve A Bug",
+    "date":"2022-10-10"
+}
+
+###
+
+DELETE http://localhost:4000/todos/c566beff-0eee-4350-b9d9-037c9b1f762b
