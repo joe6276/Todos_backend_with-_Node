@@ -1,22 +1,26 @@
 
 
 GET http://localhost:4000/todos
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inl2b25uZUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Ill2b25uZSIsImlhdCI6MTY2OTIwMzA1OSwiZXhwIjoxNzkwMDkzOTQ5fQ.zDbKzMvj27dEFOSo7hzbHzpxVcy944sBX2Hq9ytotvo
 
 ###
-GET http://localhost:4000/todos
+GET http://localhost:4000/todos/91d5074a-3892-4875-b48e-4c6cafd3380d
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inl2b25uZUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Ill2b25uZSIsImlhdCI6MTY2OTIwMzA1OSwiZXhwIjoxNzkwMDkzOTQ5fQ.zDbKzMvj27dEFOSo7hzbHzpxVcy944sBX2Hq9ytotvo
 ###
 POST http://localhost:4000/todos
 Content-Type: application/json
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inl2b25uZUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Ill2b25uZSIsImlhdCI6MTY2OTIwMzA1OSwiZXhwIjoxNzkwMDkzOTQ5fQ.zDbKzMvj27dEFOSo7hzbHzpxVcy944sBX2Hq9ytotvo
 
 {
-    "title":"Code",
-    "description":"SOlve A Bug",
-    "date":"2022-10-10"
+    "title":"Refractor",
+    "description":"Refractoring Code",
+    "date":"2022-11-11"
 }
 
 ###
-PUT http://localhost:4000/todos/sdfhdhdhvjfdhn
+PUT http://localhost:4000/todos/6403ce30-465c-44d1-9065-b06cb75dcd45
 Content-Type: application/json
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inl2b25uZUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Ill2b25uZSIsImlhdCI6MTY2OTIwMzA1OSwiZXhwIjoxNzkwMDkzOTQ5fQ.zDbKzMvj27dEFOSo7hzbHzpxVcy944sBX2Hq9ytotvo
 
 {
     "title":"Updated Code",
@@ -26,16 +30,16 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/todos/c566beff-0eee-4350-b9d9-037c9b1f762b
-
+DELETE http://localhost:4000/todos/91d5074a-3892-4875-b48e-4c6cafd3380d
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inl2b25uZUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Ill2b25uZSIsImlhdCI6MTY2OTIwMzA1OSwiZXhwIjoxNzkwMDkzOTQ5fQ.zDbKzMvj27dEFOSo7hzbHzpxVcy944sBX2Hq9ytotvo
 
 ###
 POST http://localhost:4000/user/signup
 Content-Type: application/json
 
 {
-    "username":"Yvonne",
-    "email":"yvonne@gmail.com",
+    "username":"Joseph",
+    "email":"joseph@gmail.com",
     "password":"12345678"
 }
 
@@ -49,7 +53,22 @@ Content-Type: application/json
     "password":"12345678"
 }
 
+###
+POST http://localhost:4000/user/login
+Content-Type: application/json
+
+{
+    "email":"joseph1@gmail.com",
+    "password":"12345678"
+}
+
+
 
 ###
 
 GET http://localhost:4000/user/home
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvc2VwaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Ikpvc2VwaCIsImlhdCI6MTY2OTIwNDUxMywiZXhwIjoxNzkwMDk1NDAzfQ.sVdDR2Ju8A7oLGl_R3dwV8X6SqgpNBnR9h0bpuZAo4o
+
+###
+GET http://localhost:4000/user/home
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAZ21haWwuY29tIiwidXNlcm5hbWUiOiJKb2huICIsImlhdCI6MTY2OTEyMDAzMSwiZXhwIjoxNjY5MTIwMTUxfQ.1w102qGBb-0HlSftJUc81HFdRnoQVGn_4JeGBGfg-B0

@@ -1,12 +1,9 @@
- const mssql = require('mssql')
  const {v4} = require('uuid')
- const sqlConfig= require('../Config/index')
  
+ const {exec,query}= require('../DatabaseHelpers/dbhelper')
 const getTodos = async(req,res)=>{
     try {
-    const pool = await mssql.connect(sqlConfig)
-    const response  =await pool.request().execute('getTodos')
-    const todos = await response.recordset
+    const todos = await (await exec('getTodos')).recordset
     if(todos.length){
         return res.status(200).json (todos)
     }else{
@@ -19,12 +16,8 @@ const getTodos = async(req,res)=>{
 
 const getTodo = async(req,res)=>{
     try {
-        const{id}=req.params
-        const pool = await mssql.connect(sqlConfig)
-        const todo= await(await pool.request()
-        .input('id',mssql.VarChar , id)
-        .execute('getTodo')).recordset
-        
+        const{id}=req.params 
+       const todo = await(await exec('getTodo', {id})).recordset 
         if(todo.length){
             res.status(200).json(todo)
         }else{
@@ -40,14 +33,7 @@ const insertTodo = async(req,res)=>{
     try {
         const id=v4()
         const {title,description, date} =req.body
-        const pool = await mssql.connect(sqlConfig)
-        await pool.request()
-        .input('id',mssql.VarChar , id)
-        .input('title',mssql.VarChar , title)
-        .input('description',mssql.VarChar , description)
-        .input('date',mssql.VarChar , date)
-        .execute('insertTodo')
-
+        await exec('insertTodo',{id,title,description,date})
         res.status(201).json({message:'Todo Inserted'})
     } catch (error) {
          res.status(404).json({error:error.message})
@@ -59,18 +45,9 @@ const updateTodo = async(req,res)=>{
     try {
         const {id}=req.params
         const {title,description, date} =req.body
-
-        const pool = await mssql.connect(sqlConfig)
-        const todo= await(await pool.request()
-        .input('id',mssql.VarChar , id)
-        .execute('getTodo')).recordset
+        const todo = await(await exec('getTodo', {id})).recordset 
         if(todo.length){
-          await pool.request()
-        .input('id',mssql.VarChar , id)
-        .input('title',mssql.VarChar , title)
-        .input('description',mssql.VarChar , description)
-        .input('date',mssql.VarChar , date)
-        .execute('updateTodo')
+         await exec('updateTodo',{id,title,description,date})
         res.status(200).json({message:'Todo Updated!!'})
         }else{
             res.status(404).json({message: `Todo with id ${id} does not exist`}) 
@@ -84,14 +61,10 @@ const updateTodo = async(req,res)=>{
 const deleteTodo = async(req,res)=>{
     try {
         const {id}=req.params
-        const pool = await mssql.connect(sqlConfig)
-        const todo= await(await pool.request()
-        .input('id',mssql.VarChar , id)
-        .execute('getTodo')).recordset
+        const todo = await(await exec('getTodo', {id})).recordset 
 
         if(todo.length){
-            await pool.request()
-            .query(`DELETE FROM TodosTable WHERE id ='${id}'`)
+            query(`DELETE FROM TodosTable WHERE id ='${id}'`)
             res.status(200).json({message:'Todo Deleted!!'})
         }else{
              res.status(404).json({message: `Todo with id ${id} does not exist`}) 
